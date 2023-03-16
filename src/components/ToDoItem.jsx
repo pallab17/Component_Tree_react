@@ -27,7 +27,7 @@ function ToDoItem(props) {
       {/* <li style={{ textDecoration: iD ? "line-through" : "none" }}>
         {props.task}
       </li> */}
-      <li>{props.tasks}</li>
+      <li>{props.pall}</li>
     </div>
   );
 }
