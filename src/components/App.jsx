@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import ToDoItem from "./ToDoItem";
 function App() {
   const [inputText, setInputText] = useState("");
   const [items, setItems] = useState([]);
@@ -10,10 +10,22 @@ function App() {
   }
 
   function addItem() {
-    setItems(prevItems => {
+    setItems((prevItems) => {
       return [...prevItems, inputText];
     });
     setInputText("");
+  }
+  // id ta esegehe deleteitem r kache
+  function deleteItem(id) {
+    // setItems ke call diyechi bolchi je baba setItems
+    // tui ekta kaj kor tui prevItems r array tar modhe jehkhane sob tasks gulo ache
+    // setar modhe je task take click korchi setake baad diye
+    //  baki tasks guno ke ui te show kora aar jei task take click korchi setake array theke bar kore de
+    setItems((prevItems) => {
+      return prevItems.filter((item, index) => {
+        return index !== id;
+      });
+    });
   }
 
   return (
@@ -29,8 +41,16 @@ function App() {
       </div>
       <div>
         <ul>
-          {items.map(todoItem => (
-            <li>{todoItem}</li>
+          {items.map((todoItem, index) => (
+            // <li>{todoItem}</li>
+            <ToDoItem
+              key={index}
+              id={index}
+              task={todoItem}
+              onChecked={deleteItem}
+              // task r id te esegeche unchecked r kache
+              // ebar unchecked id take transfer korche deleteiTem bole fn take
+            />
           ))}
         </ul>
       </div>
@@ -39,3 +59,13 @@ function App() {
 }
 
 export default App;
+
+/*
+what are we trying to do ?
+ami chaichi je which i click on a task which is added should vanish from the list
+and ui te jeno na dekhte pawa jaye
+
+
+
+
+*/
