@@ -46,7 +46,7 @@ function App() {
             <ToDoItem
               key={index}
               id={index}
-              task={todoItem}
+              pall={todoItem}
               onChecked={deleteItem}
               // task r id te esegeche unchecked r kache
               // ebar unchecked id take transfer korche deleteiTem bole fn take
